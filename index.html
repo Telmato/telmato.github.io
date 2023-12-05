@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            min-height: 100px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Adventure Game</h1>
+    <div id="output">Welcome to the adventure game! Click the button to start your journey.</div>
+    <button onclick="startGame()">Start</button>
+
+    <script>
+        let stage = 0;  // Initial stage
+
+        function startGame() {
+            document.getElementById('output').innerHTML = "You find yourself in a mysterious place. Choose your path wisely.";
+            document.getElementsByTagName('button')[0].innerHTML = "Continue";
+            document.getElementsByTagName('button')[0].onclick = nextStage;
+        }
+
+        function nextStage() {
+            stage++;
+            switch (stage) {
+                case 1:
+                    document.getElementById('output').innerHTML = "You come across a fork in the road. Do you go left or right?";
+                    break;
+                case 2:
+                    document.getElementById('output').innerHTML = "As you walk, you see a bridge in the distance. Do you cross it or go around?";
+                    break;
+                case 3:
+                    document.getElementById('output').innerHTML = "You encounter a dragon! Do you try to fight it or run away?";
+                    break;
+                case 4:
+                    document.getElementById('output').innerHTML = "Congratulations! You have completed the adventure. Play again?";
+                    document.getElementsByTagName('button')[0].innerHTML = "Restart";
+                    document.getElementsByTagName('button')[0].onclick = restartGame;
+                    break;
+            }
+        }
+
+        function restartGame() {
+            stage = 0;
+            startGame();
+        }
+    </script>
+</body>
+</html>
